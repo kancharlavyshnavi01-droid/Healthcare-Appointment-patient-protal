@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Healthcare Appointment & Patient Portal</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+  body { background: #f2f7f8; }
+  .hero { background: linear-gradient(135deg, #0d6efd, #0aa2a2); color: #fff; padding: 90px 0; }
+  .card { border: 0; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+  .card-header { background: #fff; font-weight: 600; }
+  section { padding: 50px 0 10px; }
+  .service-icon { font-size: 2rem; }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" href="#home">🏥 HealthCare+</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#registration">Patient Registration</a></li>
+        <li class="nav-item"><a class="nav-link" href="#appointments">Appointments</a></li>
+        <li class="nav-item"><a class="nav-link" href="#health">Health Information</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#technologies">Technologies</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Home -->
+<header id="home" class="hero text-center mt-5">
+  <div class="container">
+    <h1 class="display-5 fw-bold">Healthcare Appointment &amp; Patient Portal</h1>
+    <p class="lead">Register, book appointments and track your health information in one place.</p>
+    <a href="#registration" class="btn btn-light btn-lg">Book an Appointment</a>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Registration -->
+  <section id="registration">
+    <div class="card">
+      <div class="card-header">📝 Patient Registration</div>
+      <div class="card-body">
+        <form id="regForm">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="pname" class="form-label">Patient Name</label>
+              <input type="text" id="pname" class="form-control" required minlength="3" pattern="[A-Za-z][A-Za-z .'\-]+" title="Letters only, minimum 3 characters">
+            </div>
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" class="form-control" required>
+            </div>
+            <div class="col-md-4">
+              <label for="mobile" class="form-label">Mobile Number</label>
+              <input type="tel" id="mobile" class="form-control" required pattern="[6-9][0-9]{9}" title="10-digit mobile number">
+            </div>
+            <div class="col-md-4">
+              <label for="dob" class="form-label">Date of Birth</label>
+              <input type="date" id="dob" class="form-control" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label d-block">Gender</label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="gm" value="Male" required>
+                <label class="form-check-label" for="gm">Male</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="gf" value="Female">
+                <label class="form-check-label" for="gf">Female</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="go" value="Other">
+                <label class="form-check-label" for="go">Other</label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label for="blood" class="form-label">Blood Group</label>
+              <select id="blood" class="form-select" required>
+                <option value="">Select</option>
+                <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+                <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label for="dept" class="form-label">Department</label>
+              <select id="dept" class="form-select" required>
+                <option value="">Select</option>
+                <option>Cardiology</option>
+                <option>Dermatology</option>
+                <option>Neurology</option>
+                <option>Orthopedics</option>
+                <option>Pediatrics</option>
+              </select>
+            </div>
+            <div class="col-md-5">
+              <label for="doctor" class="form-label">Doctor Selection</label>
+              <select id="doctor" class="form-select" required disabled>
+                <option value="">Select department first</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="adate" class="form-label">Appointment Date</label>
+              <input type="date" id="adate" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label for="atime" class="form-label">Appointment Time</label>
+              <input type="time" id="atime" class="form-control" required min="09:00" max="17:00" title="Between 09:00 and 17:00">
+            </div>
+            <div class="col-12">
+              <label for="address" class="form-label">Address</label>
+              <textarea id="address" class="form-control" rows="2" required minlength="10"></textarea>
+            </div>
+            <div class="col-12">
+              <label for="symptoms" class="form-label">Symptoms / Health Concern</label>
+              <textarea id="symptoms" class="form-control" rows="3" required minlength="5"></textarea>
+            </div>
+          </div>
+          <div class="mt-4 d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="reset" class="btn btn-outline-secondary">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appointments -->
+  <section id="appointments">
+    <div class="card">
+      <div class="card-header">📅 Appointments</div>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Appointment ID</th><th>Patient Name</th><th>Department</th>
+              <th>Doctor</th><th>Date</th><th>Time</th><th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="apptBody">
+            <tr><td>APT-1001</td><td>Ravi Kumar</td><td>Cardiology</td><td>Dr. Mehta</td><td>2026-10-05</td><td>10:00</td><td><span class="badge bg-success">Confirmed</span></td></tr>
+            <tr><td>APT-1002</td><td>Sneha Patil</td><td>Dermatology</td><td>Dr. Iyer</td><td>2026-10-06</td><td>11:30</td><td><span class="badge bg-warning text-dark">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Health Information -->
+  <section id="health">
+    <h4 class="mb-3">🩺 Health Information</h4>
+    <div class="row g-3" id="healthCards">
+      <div class="col-md-6">
+        <div class="card"><div class="card-body">
+          <h5 class="card-title">Ravi Kumar <span class="badge bg-success float-end">Confirmed</span></h5>
+          <ul class="list-unstyled mb-0">
+            <li><strong>Blood Group:</strong> B+</li>
+            <li><strong>Department:</strong> Cardiology</li>
+            <li><strong>Doctor:</strong> Dr. Mehta</li>
+            <li><strong>Appointment:</strong> 2026-10-05 at 10:00</li>
+            <li><strong>Symptoms:</strong> Chest discomfort during exercise</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="col-md-6">
+        <div class="card"><div class="card-body">
+          <h5 class="card-title">Sneha Patil <span class="badge bg-warning text-dark float-end">Pending</span></h5>
+          <ul class="list-unstyled mb-0">
+            <li><strong>Blood Group:</strong> O+</li>
+            <li><strong>Department:</strong> Dermatology</li>
+            <li><strong>Doctor:</strong> Dr. Iyer</li>
+            <li><strong>Appointment:</strong> 2026-10-06 at 11:30</li>
+            <li><strong>Symptoms:</strong> Skin rash for one week</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <h4 class="mb-3">💼 Services</h4>
+    <div class="row g-3 text-center">
+      <div class="col-6 col-md-3"><div class="card h-100"><div class="card-body"><div class="service-icon">🚑</div><h6>Emergency Care</h6><small class="text-muted">24/7 emergency support</small></div></div></div>
+      <div class="col-6 col-md-3"><div class="card h-100"><div class="card-body"><div class="service-icon">🧪</div><h6>Laboratory</h6><small class="text-muted">Diagnostic tests and reports</small></div></div></div>
+      <div class="col-6 col-md-3"><div class="card h-100"><div class="card-body"><div class="service-icon">💊</div><h6>Pharmacy</h6><small class="text-muted">In-house medicines</small></div></div></div>
+      <div class="col-6 col-md-3"><div class="card h-100"><div class="card-body"><div class="service-icon">💻</div><h6>Teleconsultation</h6><small class="text-muted">Consult doctors online</small></div></div></div>
+    </div>
+  </section>
+
+  <!-- Technologies -->
+  <section id="technologies" class="pb-5">
+    <h4 class="mb-3">🛠️ Technologies</h4>
+    <div class="row g-3 text-center">
+      <div class="col-md-4"><div class="card"><div class="card-body"><h6>HTML5</h6><small class="text-muted">Structure, forms and built-in validation</small></div></div></div>
+      <div class="col-md-4"><div class="card"><div class="card-body"><h6>CSS3</h6><small class="text-muted">Custom styling and gradients</small></div></div></div>
+      <div class="col-md-4"><div class="card"><div class="card-body"><h6>Bootstrap 5</h6><small class="text-muted">Responsive grid, cards, tables, navbar</small></div></div></div>
+    </div>
+  </section>
+</div>
+
+<footer class="bg-dark text-white text-center py-3">
+  <small>© 2026 HealthCare+ Patient Portal</small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Minimal JS: dependent doctor list + adding new rows (validation itself is pure HTML5)
+  const doctors = {
+    Cardiology: ["Dr. Mehta", "Dr. Rao"],
+    Dermatology: ["Dr. Iyer", "Dr. Kapoor"],
+    Neurology: ["Dr. Nair", "Dr. Sen"],
+    Orthopedics: ["Dr. Desai", "Dr. Khan"],
+    Pediatrics: ["Dr. Joshi", "Dr. Fernandes"]
+  };
+  const dept = document.getElementById("dept");
+  const doctor = document.getElementById("doctor");
+  const form = document.getElementById("regForm");
+  let count = 1002;
+
+  // Appointment date can't be in the past; DOB can't be in the future
+  const today = new Date().toISOString().split("T")[0];
+  document.getElementById("adate").min = today;
+  document.getElementById("dob").max = today;
+
+  dept.addEventListener("change", () => {
+    doctor.innerHTML = '<option value="">Select doctor</option>';
+    (doctors[dept.value] || []).forEach(d => doctor.add(new Option(d, d)));
+    doctor.disabled = !dept.value;
+    if (!dept.value) doctor.innerHTML = '<option value="">Select department first</option>';
+  });
+
+  form.addEventListener("reset", () => {
+    doctor.innerHTML = '<option value="">Select department first</option>';
+    doctor.disabled = true;
+  });
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const v = id => document.getElementById(id).value.trim();
+    const id = "APT-" + (++count);
+
+    const tr = document.createElement("tr");
+    [id, v("pname"), v("dept"), v("doctor"), v("adate"), v("atime")].forEach(t => {
+      const td = document.createElement("td"); td.textContent = t; tr.appendChild(td);
+    });
+    const st = document.createElement("td");
+    st.innerHTML = '<span class="badge bg-warning text-dark">Pending</span>';
+    tr.appendChild(st);
+    document.getElementById("apptBody").appendChild(tr);
+
+    const col = document.createElement("div");
+    col.className = "col-md-6";
+    col.innerHTML = `<div class="card"><div class="card-body">
+      <h5 class="card-title"><span class="n"></span><span class="badge bg-warning text-dark float-end">Pending</span></h5>
+      <ul class="list-unstyled mb-0">
+        <li><strong>Blood Group:</strong> <span class="b"></span></li>
+        <li><strong>Department:</strong> <span class="d"></span></li>
+        <li><strong>Doctor:</strong> <span class="dr"></span></li>
+        <li><strong>Appointment:</strong> <span class="dt"></span></li>
+        <li><strong>Symptoms:</strong> <span class="s"></span></li>
+      </ul></div></div>`;
+    col.querySelector(".n").textContent = v("pname");
+    col.querySelector(".b").textContent = v("blood");
+    col.querySelector(".d").textContent = v("dept");
+    col.querySelector(".dr").textContent = v("doctor");
+    col.querySelector(".dt").textContent = v("adate") + " at " + v("atime");
+    col.querySelector(".s").textContent = v("symptoms");
+    document.getElementById("healthCards").appendChild(col);
+
+    alert("Registered! Your appointment ID is " + id);
+    form.reset();
+    location.hash = "#appointments";
+  });
+</script>
+</body>
+</html>
